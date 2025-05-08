@@ -47,6 +47,4 @@ void showReadOnlySettings(QWidget *parent, const QString &systemSettingsPath);
 
 void showWaylandLibraryError(QWidget *parent);
 
-bool showUpdateCheckOption(QWidget *parent);
-
 } // namespace deskflow::gui::messages

@@ -113,9 +113,6 @@ QVariant Settings::defaultValue(const QString &key)
   if (key == Daemon::Elevate)
     return instance()->isNativeMode();
 
-  if (key == Core::UpdateUrl)
-    return kUrlUpdateCheck;
-
   if (key == Server::ExternalConfigFile)
     return QStringLiteral("%1/%2.conf").arg(instance()->settingsPath(), kAppId);
 

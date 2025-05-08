@@ -42,8 +42,6 @@ add_library(${target} STATIC
   ServerConfig.h
   Styles.h
   StyleUtils.h
-  VersionChecker.cpp
-  VersionChecker.h
   config/IServerConfig.h
   config/Screen.cpp
   config/Screen.h

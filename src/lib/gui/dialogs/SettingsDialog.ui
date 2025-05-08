@@ -85,13 +85,6 @@
          </property>
          <layout class="QVBoxLayout" name="_9">
           <item>
-           <widget class="QCheckBox" name="cbAutoUpdate">
-            <property name="text">
-             <string>Check for updates on startup </string>
-            </property>
-           </widget>
-          </item>
-          <item>
            <widget class="QCheckBox" name="cbCloseToTray">
             <property name="text">
              <string>Leave app running in notification area when the window is closed</string>
@@ -607,7 +600,6 @@
   <tabstop>cbPreventSleep</tabstop>
   <tabstop>cbLanguageSync</tabstop>
   <tabstop>cbScrollDirection</tabstop>
-  <tabstop>cbAutoUpdate</tabstop>
   <tabstop>cbCloseToTray</tabstop>
   <tabstop>cbAutoHide</tabstop>
   <tabstop>rbIconColorful</tabstop>

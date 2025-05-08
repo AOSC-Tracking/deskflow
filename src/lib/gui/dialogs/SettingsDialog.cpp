@@ -154,7 +154,6 @@ void SettingsDialog::accept()
   Settings::setValue(Settings::Core::StopOnDeskSwitch, ui->cbStopOnDeskSwitch->isChecked());
   Settings::setValue(Settings::Daemon::Elevate, ui->cbElevateDaemon->isChecked());
   Settings::setValue(Settings::Gui::Autohide, ui->cbAutoHide->isChecked());
-  Settings::setValue(Settings::Gui::AutoUpdateCheck, ui->cbAutoUpdate->isChecked());
   Settings::setValue(Settings::Core::PreventSleep, ui->cbPreventSleep->isChecked());
   Settings::setValue(Settings::Security::Certificate, ui->lineTlsCertPath->text());
   Settings::setValue(Settings::Security::KeySize, ui->comboTlsKeyLength->currentText().toInt());
@@ -189,7 +188,6 @@ void SettingsDialog::loadFromConfig()
   ui->cbCloseToTray->setChecked(Settings::value(Settings::Gui::CloseToTray).toBool());
   ui->cbStopOnDeskSwitch->setChecked(Settings::value(Settings::Core::StopOnDeskSwitch).toBool());
   ui->cbElevateDaemon->setChecked(Settings::value(Settings::Daemon::Elevate).toBool());
-  ui->cbAutoUpdate->setChecked(Settings::value(Settings::Gui::AutoUpdateCheck).toBool());
 
   const auto processMode = Settings::value(Settings::Core::ProcessMode).value<Settings::ProcessMode>();
   ui->groupService->setChecked(processMode == Settings::ProcessMode::Service);
@@ -278,7 +276,6 @@ void SettingsDialog::updateControls()
   ui->comboLogLevel->setEnabled(writable);
   ui->cbLogToFile->setEnabled(writable);
   ui->cbAutoHide->setEnabled(writable);
-  ui->cbAutoUpdate->setEnabled(writable);
   ui->cbPreventSleep->setEnabled(writable);
   ui->lineTlsCertPath->setEnabled(writable);
   ui->comboTlsKeyLength->setEnabled(writable);
