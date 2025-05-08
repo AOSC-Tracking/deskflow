@@ -17,7 +17,6 @@
 #include <QThread>
 
 #include "ServerConfig.h"
-#include "VersionChecker.h"
 #include "gui/core/ClientConnection.h"
 #include "gui/core/CoreProcess.h"
 #include "gui/core/ServerConnection.h"
@@ -97,7 +96,6 @@ private:
   void coreProcessError(CoreProcess::Error error);
   void coreConnectionStateChanged(CoreProcess::ConnectionState state);
   void coreProcessStateChanged(CoreProcess::ProcessState state);
-  void versionCheckerUpdateFound(const QString &version);
   void trayIconActivated(QSystemTrayIcon::ActivationReason reason);
   void serverConnectionConfigureClient(const QString &clientName);
 
@@ -164,7 +162,6 @@ private:
   inline static const auto m_guiSocketName = QStringLiteral("deskflow-gui");
   inline static const auto m_nameRegEx = QRegularExpression(QStringLiteral("^[\\w\\-_\\.]{0,255}$"));
 
-  VersionChecker m_versionChecker;
   bool m_secureSocket = false;
   bool m_saveOnExit = true;
   deskflow::gui::core::WaylandWarnings m_waylandWarnings;

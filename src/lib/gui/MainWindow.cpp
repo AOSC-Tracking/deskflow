@@ -324,8 +324,6 @@ void MainWindow::connectSlots()
   connect(m_actionRestartCore, &QAction::triggered, this, &MainWindow::resetCore);
   connect(m_actionStopCore, &QAction::triggered, this, &MainWindow::stopCore);
 
-  connect(&m_versionChecker, &VersionChecker::updateFound, this, &MainWindow::versionCheckerUpdateFound);
-
 // Mac os tray will only show a menu
 #ifndef Q_OS_MAC
   connect(m_trayIcon, &QSystemTrayIcon::activated, this, &MainWindow::trayIconActivated);
@@ -407,12 +405,6 @@ void MainWindow::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
   if (reason != QSystemTrayIcon::Trigger)
     return;
   isVisible() ? hide() : showAndActivate();
-}
-
-void MainWindow::versionCheckerUpdateFound(const QString &version)
-{
-  m_btnUpdate->setVisible(true);
-  m_btnUpdate->setToolTip(tr("A new version v%1 is available").arg(version));
 }
 
 void MainWindow::coreProcessError(CoreProcess::Error error)
@@ -633,16 +625,6 @@ void MainWindow::open()
   // hacky and fragile, so maybe there's a better approach.
   const auto kCriticalDialogDelay = 100;
   QTimer::singleShot(kCriticalDialogDelay, this, &messages::raiseCriticalDialog);
-
-  if (!Settings::value(Settings::Gui::AutoUpdateCheck).isValid()) {
-    Settings::setValue(Settings::Gui::AutoUpdateCheck, messages::showUpdateCheckOption(this));
-  }
-
-  if (Settings::value(Settings::Gui::AutoUpdateCheck).toBool()) {
-    m_versionChecker.checkLatest();
-  } else {
-    qDebug() << "update check disabled";
-  }
 
   if (Settings::value(Settings::Core::StartedBefore).toBool()) {
     if (ui->rbModeClient->isChecked() && ui->lineHostname->text().isEmpty())
