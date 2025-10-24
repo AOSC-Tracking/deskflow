@@ -18,7 +18,6 @@ const auto kUrlApp = QStringLiteral("https://%1").arg(kOrgDomain);
 const auto kUrlHelp = QStringLiteral("%1/help?%2").arg(kUrlApp, kUrlSourceQuery);
 const auto kUrlDownload = QStringLiteral("%1/download?%2").arg(kUrlApp, kUrlSourceQuery);
 const auto kUrlWiki = QStringLiteral("%1/wiki?%2").arg(kUrlApp, kUrlSourceQuery);
-const auto kUrlUpdateCheck = QStringLiteral("https://api.%1/version").arg(kOrgDomain);
 
 #if defined(Q_OS_LINUX)
 const auto kUrlGnomeTrayFix = QStringLiteral("https://extensions.gnome.org/extension/615/appindicator-support/");

@@ -129,7 +129,6 @@ void SettingsDialog::initConnections() const
   connect(ui->cbPreventSleep, &QCheckBox::toggled, this, &SettingsDialog::setButtonBoxEnabledButtons);
   connect(ui->rbCloseToTray, &QRadioButton::toggled, this, &SettingsDialog::setButtonBoxEnabledButtons);
   connect(ui->cbElevateDaemon, &QCheckBox::toggled, this, &SettingsDialog::setButtonBoxEnabledButtons);
-  connect(ui->cbAutoUpdate, &QCheckBox::toggled, this, &SettingsDialog::setButtonBoxEnabledButtons);
   connect(ui->cbGuiDebug, &QCheckBox::toggled, this, &SettingsDialog::setButtonBoxEnabledButtons);
   connect(ui->cbShowVersion, &QCheckBox::toggled, this, &SettingsDialog::setButtonBoxEnabledButtons);
   connect(ui->cbRequireClientCert, &QCheckBox::toggled, this, &SettingsDialog::setButtonBoxEnabledButtons);
@@ -227,7 +226,6 @@ void SettingsDialog::accept()
   Settings::setValue(Settings::Log::File, ui->lineLogFilename->text());
   Settings::setValue(Settings::Daemon::Elevate, ui->cbElevateDaemon->isChecked());
   Settings::setValue(Settings::Gui::Autohide, ui->rbAutoHide->isChecked());
-  Settings::setValue(Settings::Gui::AutoUpdateCheck, ui->cbAutoUpdate->isChecked());
   Settings::setValue(Settings::Core::PreventSleep, ui->cbPreventSleep->isChecked());
   Settings::setValue(Settings::Security::Certificate, ui->lineTlsCertPath->text());
   Settings::setValue(Settings::Security::KeySize, ui->comboTlsKeyLength->currentText().toInt());
@@ -263,7 +261,6 @@ void SettingsDialog::loadFromConfig()
   ui->lineLogFilename->setText(Settings::value(Settings::Log::File).toString());
   ui->cbPreventSleep->setChecked(Settings::value(Settings::Core::PreventSleep).toBool());
   ui->cbElevateDaemon->setChecked(Settings::value(Settings::Daemon::Elevate).toBool());
-  ui->cbAutoUpdate->setChecked(Settings::value(Settings::Gui::AutoUpdateCheck).toBool());
   ui->cbGuiDebug->setChecked(Settings::value(Settings::Log::GuiDebug).toBool());
   ui->cbShowVersion->setChecked(Settings::value(Settings::Gui::ShowVersionInTitle).toBool());
   ui->cbRunEnterCommand->setChecked(Settings::value(Settings::Core::EnableEnterCommand).toBool());
@@ -380,7 +377,6 @@ void SettingsDialog::updateControls()
   ui->rbAutoHide->setEnabled(writable);
   ui->rbShowOnStart->setEnabled(writable);
   ui->btnClearAllSettings->setEnabled(writable);
-  ui->cbAutoUpdate->setEnabled(writable);
   ui->cbPreventSleep->setEnabled(writable);
   ui->lineTlsCertPath->setEnabled(writable);
   ui->comboTlsKeyLength->setEnabled(writable);
@@ -431,7 +427,6 @@ bool SettingsDialog::isModified() const
       (ui->cbPreventSleep->isChecked() != Settings::value(Settings::Core::PreventSleep).toBool()) ||
       (ui->rbCloseToTray->isChecked() != Settings::value(Settings::Gui::CloseToTray).toBool()) ||
       (ui->cbElevateDaemon->isChecked() != Settings::value(Settings::Daemon::Elevate).toBool()) ||
-      (ui->cbAutoUpdate->isChecked() != Settings::value(Settings::Gui::AutoUpdateCheck).toBool()) ||
       (ui->cbGuiDebug->isChecked() != Settings::value(Settings::Log::GuiDebug).toBool()) ||
       (ui->cbShowVersion->isChecked() != Settings::value(Settings::Gui::ShowVersionInTitle).toBool()) ||
       (ui->rbIconMono->isChecked() != Settings::value(Settings::Gui::SymbolicTrayIcon).toBool()) ||
@@ -466,7 +461,6 @@ bool SettingsDialog::isDefault() const
       (ui->cbPreventSleep->isChecked() == Settings::defaultValue(Settings::Core::PreventSleep).toBool()) &&
       (ui->rbCloseToTray->isChecked() == Settings::defaultValue(Settings::Gui::CloseToTray).toBool()) &&
       (ui->cbElevateDaemon->isChecked() == Settings::defaultValue(Settings::Daemon::Elevate).toBool()) &&
-      (ui->cbAutoUpdate->isChecked() == Settings::defaultValue(Settings::Gui::AutoUpdateCheck).toBool()) &&
       (ui->cbGuiDebug->isChecked() == Settings::defaultValue(Settings::Log::GuiDebug).toBool()) &&
       (ui->cbShowVersion->isChecked() == Settings::defaultValue(Settings::Gui::ShowVersionInTitle).toBool()) &&
       (ui->rbIconMono->isChecked() == Settings::defaultValue(Settings::Gui::SymbolicTrayIcon).toBool()) &&
@@ -494,7 +488,6 @@ void SettingsDialog::resetToDefault()
   ui->lineLogFilename->setText(Settings::defaultValue(Settings::Log::File).toString());
   ui->cbPreventSleep->setChecked(Settings::defaultValue(Settings::Core::PreventSleep).toBool());
   ui->cbElevateDaemon->setChecked(Settings::defaultValue(Settings::Daemon::Elevate).toBool());
-  ui->cbAutoUpdate->setChecked(Settings::defaultValue(Settings::Gui::AutoUpdateCheck).toBool());
   ui->cbGuiDebug->setChecked(Settings::defaultValue(Settings::Log::GuiDebug).toBool());
   ui->cbShowVersion->setChecked(Settings::defaultValue(Settings::Gui::ShowVersionInTitle).toBool());
   ui->cbRunEnterCommand->setChecked(Settings::defaultValue(Settings::Core::EnableEnterCommand).toBool());

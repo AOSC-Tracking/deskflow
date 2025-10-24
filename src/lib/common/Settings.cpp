@@ -334,9 +334,6 @@ QVariant Settings::defaultValue(const QString &key)
   if (key == Daemon::Elevate)
     return !Settings::isPortableMode();
 
-  if (key == Gui::UpdateCheckUrl)
-    return kUrlUpdateCheck;
-
   if (key == Server::ExternalConfigFile)
     return QStringLiteral("%1/%2-server.conf").arg(Settings::settingsPath(), kAppId);
 
