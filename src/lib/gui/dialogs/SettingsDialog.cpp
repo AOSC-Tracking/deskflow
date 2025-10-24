@@ -165,7 +165,6 @@ void SettingsDialog::accept()
   Settings::setValue(Settings::Log::File, ui->lineLogFilename->text());
   Settings::setValue(Settings::Daemon::Elevate, ui->cbElevateDaemon->isChecked());
   Settings::setValue(Settings::Gui::Autohide, ui->cbAutoHide->isChecked());
-  Settings::setValue(Settings::Gui::AutoUpdateCheck, ui->cbAutoUpdate->isChecked());
   Settings::setValue(Settings::Core::PreventSleep, ui->cbPreventSleep->isChecked());
   Settings::setValue(Settings::Security::Certificate, ui->lineTlsCertPath->text());
   Settings::setValue(Settings::Security::KeySize, ui->comboTlsKeyLength->currentText().toInt());
@@ -203,7 +202,6 @@ void SettingsDialog::loadFromConfig()
   ui->cbScrollDirection->setChecked(Settings::value(Settings::Client::InvertScrollDirection).toBool());
   ui->cbCloseToTray->setChecked(Settings::value(Settings::Gui::CloseToTray).toBool());
   ui->cbElevateDaemon->setChecked(Settings::value(Settings::Daemon::Elevate).toBool());
-  ui->cbAutoUpdate->setChecked(Settings::value(Settings::Gui::AutoUpdateCheck).toBool());
   ui->sbScrollSpeed->setValue(Settings::value(Settings::Client::ScrollSpeed).toInt());
   ui->cbGuiDebug->setChecked(Settings::value(Settings::Log::GuiDebug).toBool());
   ui->cbUseWlClipboard->setChecked(Settings::value(Settings::Core::UseWlClipboard).toBool());
@@ -295,7 +293,6 @@ void SettingsDialog::updateControls()
   ui->comboLogLevel->setEnabled(writable);
   ui->cbLogToFile->setEnabled(writable);
   ui->cbAutoHide->setEnabled(writable);
-  ui->cbAutoUpdate->setEnabled(writable);
   ui->cbPreventSleep->setEnabled(writable);
   ui->lineTlsCertPath->setEnabled(writable);
   ui->comboTlsKeyLength->setEnabled(writable);
