@@ -77,14 +77,7 @@
           <string>App</string>
          </property>
          <layout class="QVBoxLayout" name="_9">
-          <item>
-           <widget class="QCheckBox" name="cbAutoUpdate">
-            <property name="text">
-             <string>Check for updates on startup </string>
-            </property>
-           </widget>
-          </item>
-          <item>
+         <item>
            <widget class="QCheckBox" name="cbAutoHide">
             <property name="text">
              <string>Hide the window when the app starts</string>
@@ -641,7 +634,6 @@
   <tabstop>tabWidget</tabstop>
   <tabstop>cbLanguageSync</tabstop>
   <tabstop>cbScrollDirection</tabstop>
-  <tabstop>cbAutoUpdate</tabstop>
   <tabstop>cbCloseToTray</tabstop>
   <tabstop>rbIconColorful</tabstop>
   <tabstop>rbIconMono</tabstop>
